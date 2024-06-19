@@ -1,1 +1,63 @@
+<!DOCTYPE html>
 
+<html>
+<head>
+  <title>SAI</title>
+  
+</head>
+<body img src="/storage/9C33-6BBD/Pictures/16e5df5b41324be3aaa958c25cb107b1.jpg" width="500" height="600">
+  <h1>
+   NAKKINA ESWARARAO
+  </h1>
+  <table>
+  <form>
+    <tr><td>user Id</td><td><input type ="text" id ="uid" pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+"></td></tr>
+ <tr><td>Password</td><td><input type ="password" id ="uid" ></td></tr>
+<tr><td>FName</td><td><input type ="text" id ="uid" ></td></tr>
+<tr><td>Mobile No</td><td><input type ="number" id ="uid" ></td></tr>
+<tr><td>Email</td><td><input type ="email" id ="uid" ></td></tr>
+<tr><td>Gender</td><td><input type ="radio" id ="uid"  name ="gender">Male
+<input type ="radio" id ="uid" name ="gender" >Female</td></tr>
+ <tr><td>Country</td><td><select id ="country" required>
+   <option>Select</option>
+   <option>India</option>
+      <option>America</option>
+      <option>Austrila</option>
+    </select> </td></tr>
+    
+  </><tr><td>Capital</td><td><span id ="capital"></span>
+  
+    
+    
+ <tr><td><input type ="submit"  value ="Submit"onclick="getState()"></td></tr>
+    <script>
+    function getState(){
+
+     var country =document.getElementById("country").value;
+      window.alert("countr" + country);
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      alert("readystatecahange is"+xhttp.readyState);
+        if(xhttp.readyState === 4 && this.status === 200){
+alert("hi");
+     var responseData =xhttp.responseText;
+alert(responseData);
+    var jsonData = JSON.parse(responseData);
+
+     var capital = jsonData[0].capital;
+
+    document.getElementById("capital").innerHTML = capital;
+        }
+};
+xhttp.open("GET", "https://jsonmock.hackerrank.com/api/countries?name",true);
+xhttp.send();
+
+} 
+    </script>
+</form>
+   </td>
+    </tr>
+  </table>
+    
+</body>
+</html>
